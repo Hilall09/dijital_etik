@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Analiz Tamamlandı</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: #00ff99;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .box {
+      border: 2px solid #00ff99;
+      padding: 30px;
+      box-shadow: 0 0 25px rgba(0,255,153,.5);
+      max-width: 560px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      background: #00ff99;
+      border: none;
+      cursor: pointer;
+    }
+    .countdown {
+      margin-top: 15px;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1>Öyle her butona basmamak lazım</h1>
+  <p>Sonuçları görüntülemek için devam edin. (güven bana) </p>
+
+  <button id="continueBtn">Sonuçları Görüntüle</button>
+  <div class="countdown" id="countdown"></div>
+</div>
+<audio id="ses" src="Elevator.mp3" loop></audio>
+<script>
+  const btn = document.getElementById("continueBtn");
+  const countdown = document.getElementById("countdown");
+  const alarm = document.getElementById("ses");
+
+  const FORM_URL =
+    "https://docs.google.com/forms/d/1CyP4fEhatO_x4DOU0t-ozIDakLQwm59-P1wI-QLl5C8/viewanalytics";
+
+  btn.addEventListener("click", () => {
+    alarm.currentTime = 0;
+    alarm.volume = 0.6;
+    alarm.play().catch(() => {});
+
+    btn.disabled = true;
+    btn.textContent = "Hazırlanıyor...";
+    countdown.style.display = "block";
+
+    let seconds = 7;
+    countdown.textContent = `Yönlendiriliyor (${seconds})`;
+
+    const timer = setInterval(() => {
+      seconds--;
+      countdown.textContent = `Yönlendiriliyor (${seconds})`;
+
+      if (seconds === 0) {
+        clearInterval(timer);
+        window.location.href = FORM_URL;
+      }
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güvenlik Uyarısı</title>
+    <link rel="stylesheet" href="virus.css" />
+</head>
+<body>
+  <div class="card">
+    <h1>⚠ KRİTİK GÜVENLİK UYARISI ⚠</h1>
+    <p>Sisteminizde <strong>zararlı yazılım</strong> tespit edildi.
+       Kişisel verileriniz risk altında olabilir.</p>
+
+    <button class="btn" id="startBtn">Taramayı Başlat</button>
+
+    <div class="progress" id="progress">
+      <div class="bar"></div>
+    </div>
+
+    <div class="note">
+      
+    </div>
+  </div>
+
+  <!-- Ses dosyası: Aynı klasöre warning.mp3 koy -->
+ <audio id="alarm" src="alarm.mp3" loop></audio>
+
+  <script src="virus.js"></script>
+</body>
+</html>
+
